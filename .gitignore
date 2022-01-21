@@ -1,0 +1,11 @@
+artifacts
+coverage
+node_modules
+cache
+
+.env
+coverage.json
+coverage1.jpg
+Token.txt
+package-lock.json
+package.json
