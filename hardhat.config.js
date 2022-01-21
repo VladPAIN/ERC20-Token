@@ -7,6 +7,12 @@
  require('dotenv').config();
  require("@nomiclabs/hardhat-web3");
 
+ task("accounts", "Prints accounts", async (_, { web3 }) => {
+  
+  console.log(await web3.eth.getAccounts());
+  
+});
+
 task("balance", "Prints an account's balance")
   .addParam("account", "The account's address")
   .setAction(async (taskArgs) => {
@@ -14,7 +20,7 @@ task("balance", "Prints an account's balance")
     const balance = await web3.eth.getBalance(account);
 
     console.log(web3.utils.fromWei(balance, "ether"), "ETH");
-  });
+});
 
 module.exports = {
   solidity: "0.8.10",
