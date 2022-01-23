@@ -6,9 +6,9 @@ import "./IERC20.sol";
 contract Token is IERC20, Ownable {
     string public constant name = 'MyToken';
     string public constant symbol = 'MTKN';
-    uint32 public constant decimals = 18;//000000000000000000
+    uint32 public constant decimals = 18;
                                         
-    uint256 public _totalSupply = 0; //10000
+    uint256 public _totalSupply;
 
     mapping(address => uint256) balances;
     mapping(address => mapping (address => uint256)) allowances;
@@ -47,14 +47,14 @@ contract Token is IERC20, Ownable {
     }
 
     function increaseAllowance(address spender, uint256 amount) public returns(bool) {
-        require(spender != address(0));
+        require(spender != address(0) && amount >= 0);
         allowances[msg.sender][spender] += amount;
         emit Approval(msg.sender, spender, allowances[msg.sender][spender]);
         return true;
     }
 
         function decreaseAllowance(address spender, uint256 amount) public returns(bool) {
-        require(spender != address(0) && allowances[msg.sender][spender] >= amount);
+        require(spender != address(0) && allowances[msg.sender][spender] >= amount && amount >= 0);
         allowances[msg.sender][spender] -= amount;
         emit Approval(msg.sender, spender, allowances[msg.sender][spender]);
         return true;

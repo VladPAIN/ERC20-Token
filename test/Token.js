@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { ethers } = require('hardhat');
+const { collectCompilations } = require('truffle');
 
 describe('Token contract', () => {
     let Token, token, owner, addr1, addr2;
@@ -18,6 +19,20 @@ describe('Token contract', () => {
         it('Should assign the total supply of tokens to the owner', async () => {
             const ownerBalance = await token.balanceOf(owner.address);
             expect(await token.totalSupply()).to.equal(ownerBalance);
+        });
+    });
+
+    describe('Ownable', () => {
+        it('Should change owner', async () => {
+            await token.transferOwnership(addr1.address);
+
+            expect(await token.connect(addr1).isOwner()).to.equal(true);
+        });
+
+        it('Should renounce owner', async () => {
+            await token.renounceOwnership();
+
+            expect(await token.isOwner()).to.equal(false);
         });
     });
 
