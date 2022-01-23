@@ -12,8 +12,8 @@
  require("./tasks/approve");
  require("./tasks/balance");
  require("./tasks/balanceof");
- require("./tasks/transfer")
- require("./tasks/transferfrom")
+ require("./tasks/transfer");
+ require("./tasks/transferfrom");
 
 module.exports = {
   solidity: "0.8.10",

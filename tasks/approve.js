@@ -10,9 +10,12 @@ task("approve", "Approve")
 
         const [sender] = await ethers.getSigners();
 
-        await (await token.connect(sender).approve(taskArgs.spender, taskArgs.amount)).wait()
+        await token.connect(sender).approve(sender.address, ethers.utils.parseUnits(taskArgs.amount, 18));
         console.log(`${sender.address} has approved ${taskArgs.amount} tokens to ${taskArgs.spender}`);
+        console.log(await token.allowance(sender.address, taskArgs.spender));
 
+        console.log(sender.address);
+        console.log(await token.balanceOf(sender.address));
 
     });
 
