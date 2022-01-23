@@ -11,7 +11,6 @@ task("transfer", "Transfer")
         const [minter] = await ethers.getSigners();
         await (await token.connect(minter).transfer(taskArgs.spender, taskArgs.amount)).wait()
         console.log(`${minter.address} has transferred ${taskArgs.amount} to ${taskArgs.spender}`);
-        console.log(await token.connect(minter).totalSupply());
     });
 
 module.exports = {};
