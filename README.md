@@ -1,1 +1,7 @@
 ERC20-Token
+
+Deploying contracts with the account: 0x081B5aC082ebcc641e199eAc249F386Ad36c96EC
+
+Token address: 0x155773b9199fA4383073d35907cDf383889121BE
+
+https://kovan.etherscan.io/address/0x155773b9199fA4383073d35907cDf383889121BE
