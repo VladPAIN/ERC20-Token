@@ -18,7 +18,6 @@ task("transferfrom", "ERC-20 transferFrom")
 
       console.log(taskArgs.recipient, await token.balanceOf(taskArgs.recipient));
       console.log(await token.balanceOf(sender.address));
-      console.log(await token.allowance(sender.address, taskArgs.recipient));
 
 
     });
